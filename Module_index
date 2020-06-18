@@ -1,0 +1,20 @@
+Sub index()
+
+
+module_general.connect_database
+
+Dim sql_query As String
+Dim sql_update_query As String
+Dim myrecordset As ADODB.Recordset
+Dim newTaskCodeAddress As String
+Dim taskIdAddress As String
+
+For i = 1 To functions.totalActivity
+
+newTaskCodeAddress = Cells(3 + i, 4).Value
+taskIdAddress = Cells(3 + i, 2).Value
+sql_update_query = "UPDATE TASK SET task_code='" & newTaskCodeAddress & "' WHERE task_id='" & taskIdAddress & "' AND proj_id='12119'"
+myConnection.Execute sql_update_query
+Next i
+
+End Sub
