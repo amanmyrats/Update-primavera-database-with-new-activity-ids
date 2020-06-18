@@ -1,0 +1,30 @@
+Sub getActivities()
+
+
+module_general.connect_database
+
+Dim sql_query_get As String
+Dim sql_get_query As String
+Dim myrecordsetget As ADODB.Recordset
+Dim newTaskCodeAddress_get As String
+Dim taskIdAddress_get As String
+Dim i As Integer
+
+newTaskCodeAddress = Cells(3 + i, 4).Value
+taskIdAddress = Cells(3 + i, 2).Value
+
+sql_getquery = "SELECT proj_id, task_id, task_code FROM TASK WHERE proj_id='12119'"
+
+Set myrecordsetget = myConnection.Execute(sql_getquery)
+i = 0
+While Not myrecordsetget.EOF
+
+Sheets("index").Cells(4 + i, 1).Value = myrecordsetget.Fields(0)
+Sheets("index").Cells(4 + i, 2).Value = myrecordsetget.Fields(1)
+Sheets("index").Cells(4 + i, 3).Value = myrecordsetget.Fields(2)
+i = i + 1
+myrecordsetget.MoveNext
+Wend
+
+End Sub
+
