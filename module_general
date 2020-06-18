@@ -1,6 +1,13 @@
-Function totalActivity()
+Sub connect_database()
 
-totalActivity = Sheets("index").Range("C4:" & Range("C4").End(xlDown).Address(False, False)).Rows.Count
+Set myConnection = New ADODB.Connection
+myConnectionString = ("Provider=SQLOLEDB; User ID=privuser2; Password=privuser2; Data Source=INTVSRV191; Initial Catalog=PMDB1")
+
+myConnection.Open myConnectionString
+
+If myConnection.State > 0 Then
+Range("A1").Value = "Connection Established with pmdb1"
+End If
 
 
-End Function
+End Sub
