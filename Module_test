@@ -1,0 +1,41 @@
+Sub test()
+
+module_general.connect_database
+
+Dim sqlQuery As String
+Dim myrs As ADODB.Recordset
+
+sqlQuery = "Select proj_id, task_id, task_code FROM TASK WHERE proj_id='10510'"
+Set myrs = myConnection.Execute(sqlQuery)
+
+Sheets("index").Range("A4").CopyFromRecordset myrs
+
+End Sub
+Sub test2()
+
+module_general.connect_database
+
+Dim sql As String
+Dim myrs As ADODB.Recordset
+
+sql = "UPDATE TASK SET task_code='amantesteeryrg3' where task_id='2523287'"
+myConnection.Execute sql
+
+End Sub
+Sub test3()
+
+module_general.connect_database
+
+Dim sql As String
+Dim myrs As ADODB.Recordset
+
+sql = "SELECT * FROM PROJECT"
+Set myrs = myConnection.Execute(sql)
+Sheets("index").Range("A4").CopyFromRecordset myrs
+
+End Sub
+Sub test4()
+
+Sheets("index").Range("D1").Value = functions.totalActivity
+
+End Sub
