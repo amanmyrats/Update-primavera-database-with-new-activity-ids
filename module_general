@@ -1,0 +1,6 @@
+Function totalActivity()
+
+totalActivity = Sheets("index").Range("C4:" & Range("C4").End(xlDown).Address(False, False)).Rows.Count
+
+
+End Function
